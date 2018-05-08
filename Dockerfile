@@ -18,7 +18,7 @@ ENV LUAJIT_INC=/usr/include/luajit-2.0
 RUN mkdir -p /src /config /logs /lua-modules/lua-resty-redis
 
 # update and upgrade packages
-RUN apt-get update && apt-get upgrade -y && apt-get install -y \
+RUN apt-get update && apt-get install -y \
   build-essential \
   libluajit-5.1-dev \
   libpcre3-dev \
