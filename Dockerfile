@@ -15,7 +15,7 @@ ENV LUAJIT_LIB=/usr/lib/x86_64-linux-gnu
 ENV LUAJIT_INC=/usr/include/luajit-2.0
 
 # create directories
-RUN mkdir -p /src /config /logs /lua-modules/lua-resty-redis
+RUN mkdir -p /src /config /logs
 
 # update and upgrade packages
 RUN apt-get update && apt-get install -y \
@@ -41,7 +41,7 @@ RUN cd /src && wget https://github.com/simpl/ngx_devel_kit/archive/v${NGINX_DEVE
 RUN cd /src && wget https://github.com/openresty/lua-nginx-module/archive/v${NGINX_LUA_VERSION}.tar.gz && tar zxf v${NGINX_LUA_VERSION}.tar.gz
 
 # get lua-resty-redis
-RUN cd /src && wget https://github.com/openresty/lua-resty-redis/archive/v${LUA_RESTY_REDIS}.tar.gz && tar zxf v${LUA_RESTY_REDIS}.tar.gz -C /lua-modules/lua-resty-redis --strip 1
+RUN cd /src && mkdir -p /lua-modules/lua-resty-redis && wget https://github.com/openresty/lua-resty-redis/archive/v${LUA_RESTY_REDIS}.tar.gz && tar zxf v${LUA_RESTY_REDIS}.tar.gz -C /lua-modules/lua-resty-redis --strip 1
 
 # configure nginx
 RUN cd /src/nginx-${NGINX_VERSION} && ./configure \
