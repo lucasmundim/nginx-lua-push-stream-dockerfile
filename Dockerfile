@@ -7,6 +7,7 @@ ENV NGINX_PUSH_STREAM_VERSION 0.5.4
 ENV NGINX_DEVEL_KIT_VERSION 0.3.0
 ENV NGINX_LUA_VERSION 0.10.11
 ENV LUA_RESTY_REDIS 0.26
+ENV LUA_RESTY_REDIS_CONNECTOR 0.06
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV PATH=$PATH:/usr/local/nginx/sbin
@@ -42,6 +43,9 @@ RUN cd /src && wget https://github.com/openresty/lua-nginx-module/archive/v${NGI
 
 # get lua-resty-redis
 RUN cd /src && mkdir -p /lua-modules/lua-resty-redis && wget https://github.com/openresty/lua-resty-redis/archive/v${LUA_RESTY_REDIS}.tar.gz && tar zxf v${LUA_RESTY_REDIS}.tar.gz -C /lua-modules/lua-resty-redis --strip 1
+
+# get lua-resty-redis-connector
+RUN cd /src && mkdir -p /lua-modules/lua-resty-redis-connector && wget https://github.com/pintsized/lua-resty-redis-connector/archive/v${LUA_RESTY_REDIS_CONNECTOR}.tar.gz && tar zxf v${LUA_RESTY_REDIS_CONNECTOR}.tar.gz -C /lua-modules/lua-resty-redis-connector --strip 1
 
 # configure nginx
 RUN cd /src/nginx-${NGINX_VERSION} && ./configure \
