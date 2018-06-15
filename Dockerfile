@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 MAINTAINER Lucas Mundim "lucas.mundim@gmail.com"
 
 # Versions
@@ -13,7 +13,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV PATH=$PATH:/usr/local/nginx/sbin
 
 ENV LUAJIT_LIB=/usr/lib/x86_64-linux-gnu
-ENV LUAJIT_INC=/usr/include/luajit-2.0
+ENV LUAJIT_INC=/usr/include/luajit-2.1
 
 # create directories
 RUN mkdir -p /src /config /logs
